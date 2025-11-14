@@ -19,3 +19,4 @@ Resources:
       InstanceType: t2.micro
       SecurityGroupIds:
         - !Ref MySecurityGroup
+        
