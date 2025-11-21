@@ -2,34 +2,42 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Exemple de Boutons Cliquables</title>
+    <title>Formulaire Simple</title>
+    <style>
+        /* Un peu de CSS pour améliorer la mise en page */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"] {
+            width: 200px;
+            padding: 8px;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Bouton Email -->
-    <button type="button" onclick="actionEmail()">Email</button>
+    <!-- Le formulaire -->
+    <form action="traitement.php" method="POST">
+        
+        <div class="form-group">
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" name="nom" required>
+        </div>
 
-    <!-- Bouton Nom -->
-    <button type="button" onclick="actionNom()">Nom</button>
+        <div class="form-group">
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required>
+        </div>
 
-    <script>
-        function actionEmail() {
-            // Remplacez cette ligne par l'action souhaitée, par exemple :
-            alert("Le bouton Email a été cliqué !");
-            // Pour ouvrir le client de messagerie par défaut :
-            // window.location.href = "mailto:exemple@domaine.com";
-        }
+        <!-- Le bouton "Submit" -->
+        <button type="submit">Submit</button>
 
-        function actionNom() {
-            // Remplacez cette ligne par l'action souhaitée, par exemple :
-            alert("Le bouton Nom a été cliqué !");
-            // Pour rediriger vers une autre page :
-            // window.location.href = "page-nom.html";
-        }
-    </script>
+    </form>
 
 </body>
 </html>
-
-
-
