@@ -1,6 +1,35 @@
-<html>
-    <body>
-        Victor Website Home Page
-   <h1>Welcome to my website</h1>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemple de Boutons Cliquables</title>
+</head>
+<body>
+
+    <!-- Bouton Email -->
+    <button type="button" onclick="actionEmail()">Email</button>
+
+    <!-- Bouton Nom -->
+    <button type="button" onclick="actionNom()">Nom</button>
+
+    <script>
+        function actionEmail() {
+            // Remplacez cette ligne par l'action souhaitée, par exemple :
+            alert("Le bouton Email a été cliqué !");
+            // Pour ouvrir le client de messagerie par défaut :
+            // window.location.href = "mailto:exemple@domaine.com";
+        }
+
+        function actionNom() {
+            // Remplacez cette ligne par l'action souhaitée, par exemple :
+            alert("Le bouton Nom a été cliqué !");
+            // Pour rediriger vers une autre page :
+            // window.location.href = "page-nom.html";
+        }
+    </script>
+
 </body>
 </html>
+
+
+
