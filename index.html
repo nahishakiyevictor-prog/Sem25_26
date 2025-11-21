@@ -1,43 +1,35 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Formulaire Simple</title>
-    <style>
-        /* Un peu de CSS pour améliorer la mise en page */
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input[type="text"],
-        input[type="email"] {
-            width: 200px;
-            padding: 8px;
-        }
-    </style>
-</head>
-<body>
+<html>
+    <head>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
 
-    <!-- Le formulaire -->
-    <form action="traitement.php" method="POST">
-        
-        <div class="form-group">
-            <label for="nom">Nom :</label>
-            <input type="text" id="nom" name="nom" required>
-        </div>
+                    document.querySelector('button').addEventListener('click', function() {
+                        const email = document.getElementById('email').value;
+                        const name = document.getElementById('name').value;
+                        const url = `https://2oe91jroze.execute-api.eu-west-1.amazonaws.com/default/nicofirstMS?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
+                        
+                        fetch(url)
+                            .then(response => response.json())
+                            .then(data => console.log(data))
+                            .catch(error => console.error('Error:', error));
+                    });
+            });
 
-        <div class="form-group">
-            <label for="email">Email :</label>
-            <input type="email" id="email" name="email" required>
-        </div>
+            </script>
+    </head>
 
-        <!-- Le bouton "Submit" -->
-        <button type="submit">Submit</button>
+    <body>
+        Hello HTW
 
-    </form>
+        # add two input field s and a button
+        <form>
+            <input type="text" id="email" name="email" >
+            <input type="text" id="name" name="name" >
 
-</body>
+            <button type="button">Submit</button>
+        </form> 
+
+    </body>
+
+
 </html>
