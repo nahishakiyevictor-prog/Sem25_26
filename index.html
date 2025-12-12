@@ -1,44 +1,32 @@
-<html>
-    <head>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                document.querySelector('button').addEventListener('click', function() {
-                    const email = document.getElementById('email').value;
-                    const name = document.getElementById('name').value;
-                    const url = 'https://vp6kkw16i2.execute-api.eu-west-1.amazonaws.com/VIVI/VICOfunction';
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test S3 Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            padding: 40px;
+            text-align: center;
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
 
-                    fetch(url, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            name: name,
-                            email: email
-                        })
-                    })
-                        .then(response => response.json())
-                        .then(data => console.log(data))
-                        .catch(error => console.error('Error:', error));
-                });
-            });
-        </script>
+    <div class="box">
+        <h1>Déploiement S3 / CodePipeline réussi 🎉</h1>
+        <p>Si tu vois cette page, ton bucket S3 affiche correctement du HTML.</p>
+    </div>
 
-    </head>
-
-    <body>
-        Hello HTW
-
-        # add two input field s and a button
-        <form>
-            <input type="text" id="email" name="email" >
-            <input type="text" id="name" name="name" >
-
-            <button type="button">Submit</button>
-        </form> 
-
-    </body>
-
-
+</body>
 </html>
