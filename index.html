@@ -1,37 +1,41 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <title>Formulaire Christmas</title>
-</head>
-<body>
-  <h2>Inscription Christmas</h2>
+<html>
+    <head>
 
-  <form id="signupForm">
-    <label for="name">Nom :</label><br />
-    <input type="text" id="name" name="name" required /><br /><br />
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelector('button').addEventListener('click', function() {
+                    const email = document.getElementById('email').value;
+                    const name = document.getElementById('name').value;
+                    const url = 'http://bin-buckets.s3-website-eu-west-1.amazonaws.com';
 
-    <label for="email">Email :</label><br />
-    <input type="email" id="email" name="email" required /><br /><br />
+                    fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            name: name,
+                            email: email
+                        })
+                    })
+                        .then(response => response.json())
+                        .then(data => console.log(data))
+                        .catch(error => console.error('Error:', error));
+                });
+            });
+        </script>
 
-    <button type="submit">Envoyer</button>
-  </form>
+    </head>
 
+    <body>
+        Hello HTW
 
-<script>
-document.getElementById("signupForm").addEventListener("submit", async function(event) {
-  event.preventDefault();
+        # add two input field s and a button
+        <form>
+            <input type="text" id="email" name="email" >
+            <input type="text" id="name" name="name" >
 
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-fetch("https://gv7lnx8nx6.execute-api.eu-west-1.amazonaws.com/default/submit", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ name, email })
-});
-  
-  
+            <button type="button">Submit</button>
+        </form> 
 
-  alert("Sent!");
-});
-</script>
+    </body>
