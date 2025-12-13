@@ -25,7 +25,7 @@ document.getElementById("signupForm").addEventListener("submit", async function(
   const name = document.getElementById("name").value.trim();
   const email = document.getElementById("email").value.trim();
 
-  await fetch("https://gv7lnx8nx6.execute-api.eu-west-1.amazonaws.com/default/ChristmasfunctionAPI1/submit", {
+  await fetch("https://gv7lnx8nx6.execute-api.eu-west-1.amazonaws.com/prod/submit", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name, email })
