@@ -1,41 +1,24 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
-    const button = document.querySelector('button');
+    const button = document.getElementById('submitBtn');
+
+    if (!button) {
+        console.error('Button not found');
+        return;
+    }
 
     button.addEventListener('click', function () {
-        const email = document.getElementById('email').value;
         const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
 
         const url = `https://xrq27r8x3k.execute-api.eu-west-1.amazonaws.com/default/hope-function-publish?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
 
-        fetch(url, {
-            method: 'GET'
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('HTTP error ' + response.status);
-            }
-            return response.json();
-        })
-        .then(data => console.log('Success:', data))
-        .catch(error => console.error('Error:', error));
+        fetch(url)
+            .then(res => res.json())
+            .then(data => console.log('Success:', data))
+            .catch(err => console.error('Error:', err));
     });
 
 });
 </script>
-🔐 Bonnes pratiques (recommandé)
-Utiliser POST au lieu de GET pour des données personnelles (email)
-
-Valider les champs côté frontend
-
-Ne pas exposer les emails dans l’URL (logs, cache, historique)
-
-Exemple POST (meilleure pratique) :
-js
-Copier le code
-fetch('https://xrq27r8x3k.execute-api.eu-west-1.amazonaws.com/default/hope-function-publish', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, email })
-});
