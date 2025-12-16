@@ -1,24 +1,34 @@
-<script>
-document.addEventListener('DOMContentLoaded', function () {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test API</title>
+</head>
+<body>
 
-    const button = document.getElementById('submitBtn');
+    <input type="text" id="name" placeholder="Name">
+    <br><br>
+    <input type="email" id="email" placeholder="Email">
+    <br><br>
+    <button id="submitBtn">Send</button>
 
-    if (!button) {
-        console.error('Button not found');
-        return;
-    }
+    <script>
+        const button = document.getElementById('submitBtn');
 
-    button.addEventListener('click', function () {
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
+        console.log('Button:', button); // DOIT afficher <button>
 
-        const url = `https://xrq27r8x3k.execute-api.eu-west-1.amazonaws.com/default/hope-function-publish?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
+        button.addEventListener('click', () => {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
 
-        fetch(url)
-            .then(res => res.json())
-            .then(data => console.log('Success:', data))
-            .catch(err => console.error('Error:', err));
-    });
+            const url = `https://xrq27r8x3k.execute-api.eu-west-1.amazonaws.com/default/hope-function-publish?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
 
-});
-</script>
+            fetch(url)
+                .then(res => res.json())
+                .then(data => console.log('Success:', data))
+                .catch(err => console.error('Error:', err));
+        });
+    </script>
+
+</body>
+</html>
