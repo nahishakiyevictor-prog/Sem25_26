@@ -1,34 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Test API</title>
-</head>
+<!-- <html>
 <body>
+    Hello HTW
 
-    <input type="text" id="name" placeholder="Name">
-    <br><br>
-    <input type="email" id="email" placeholder="Email">
-    <br><br>
-    <button id="submitBtn">Send</button>
+    <form>
+        <input type="text" id="email" name="email">
+        <input type="text" id="name" name="name">
+        <button type="button" id="submitBtn">Submit</button>
+    </form>
 
     <script>
-        const button = document.getElementById('submitBtn');
-
-        console.log('Button:', button); // DOIT afficher <button>
-
-        button.addEventListener('click', () => {
-            const name = document.getElementById('name').value;
+        document.getElementById('submitBtn').addEventListener('click', function () {
             const email = document.getElementById('email').value;
+            const name = document.getElementById('name').value;
 
-            const url = `https://xrq27r8x3k.execute-api.eu-west-1.amazonaws.com/default/hope-function-publish?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
+            const url = `https://xrq27r8x3k.execute-api.eu-west-1.amazonaws.com/default/hope-function-publish?name=${name}&email=${email}`;
 
             fetch(url)
-                .then(res => res.json())
-                .then(data => console.log('Success:', data))
-                .catch(err => console.error('Error:', err));
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => console.error('Error:', error));
         });
     </script>
-
 </body>
+</html>
+ -->
+<html>
+    <head>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelector('button').addEventListener('click', function() {
+                    const email = document.getElementById('email').value;
+                    const name = document.getElementById('name').value;
+                    const url = 'https://xrq27r8x3k.execute-api.eu-west-1.amazonaws.com/default/hope-function-publish';
+
+                    fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            name: name,
+                            email: email
+                        })
+                    })
+                        .then(response => response.json())
+                        .then(data => console.log(data))
+                        .catch(error => console.error('Error:', error));
+                });
+            });
+        </script>
+
+    </head>
+
+    <body>
+        Hello HTW
+
+        # add two input field s and a button
+        <form>
+            <input type="text" id="email" name="email" >
+            <input type="text" id="name" name="name" >
+
+            <button type="button">Submit</button>
+        </form> 
+
+    </body>
+
+
 </html>
